@@ -10,13 +10,14 @@
     min-height: 100vh;
     color: #fff;
 }
+
 .header-text {
     font-size: 16pt;
 }
 
 .subject {
     border-radius: 5px;
-    border: 1px solid rgba(255,255,255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
@@ -25,9 +26,11 @@
     text-decoration: none;
     color: #fff;
 }
+
 .subject:hover {
     background-color: #ccc;
 }
+
 .subject-section {
     text-align: left;
     font-size: 14pt;
@@ -35,10 +38,12 @@
     font-weight: 500;
     margin-bottom: 5px;
 }
+
 .logo-img {
     width: 100px;
     margin-top: 10px;
 }
+
 .logo-name {
     font-family: 'Gothic A1', sans-serif;
     font-size: 15pt;
@@ -51,14 +56,15 @@
 .subject:hover {
     border-color: rgba(255, 255, 255, 1.0);
 }
+
 .subject:active {
     background-color: #ccc;
 }
-.subject-title {
-}
 
-.num-cards {
-}
+.subject-title {}
+
+.num-cards {}
+
 .add-section {
     margin-top: 12px;
 }
@@ -71,8 +77,7 @@
     color: #fff;
 }
 
-.modal-form {
-}
+.modal-form {}
 
 .custom-button {
     padding-top: 5px;
@@ -81,10 +86,10 @@
     border-color: #327576;
     border-radius: 2px;
     margin-left: 10px;
-    background-color:#327576;
+    background-color: #327576;
     color: #fff;
     font-size: 15px;
-    font-weight: 200; 
+    font-weight: 200;
 }
 
 .custom-textbox {

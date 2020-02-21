@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './css/CardScreen.css'
+// import './css/CardScreen.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import Modal from 'react-modal'

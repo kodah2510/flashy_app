@@ -6,8 +6,7 @@
     color: #fff;
 }
 
-.screen-title {
-}
+.screen-title {}
 
 .screen-title h4 {
     margin-top: 0px;
@@ -47,6 +46,7 @@
 .tip-card-content {
     font-size: 13px;
 }
+
 .add-more-section {
     margin-top: 10px;
 }
