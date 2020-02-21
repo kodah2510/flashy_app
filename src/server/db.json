@@ -65,9 +65,44 @@
       "question": "helloskdhaklshd",
       "answer": "asas",
       "id": 7
+    },
+    {
+      "collection": 1,
+      "user": 1,
+      "type": "tip",
+      "tip": "hello",
+      "id": 8
+    },
+    {
+      "collection": 1,
+      "user": 1,
+      "type": "tip",
+      "tip": "hello",
+      "id": 9
+    },
+    {
+      "collection": 1,
+      "user": 1,
+      "type": "tip",
+      "tip": "hello",
+      "id": 10
+    },
+    {
+      "collection": 1,
+      "user": 1,
+      "type": "tip",
+      "tip": "hello",
+      "id": 11
+    },
+    {
+      "collection": 1,
+      "user": 1,
+      "type": "tip",
+      "tip": "hello",
+      "id": 12
     }
   ],
-  "collections": [
+  "subject": [
     {
       "id": 1,
       "name": "Random Questions"

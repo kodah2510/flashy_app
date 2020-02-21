@@ -4,34 +4,70 @@
     margin-right: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    padding-top: 20px;
     text-align: center;
     font-family: 'Roboto', san-serif;
     min-height: 100vh;
-    /*color: #fff;*/
+    color: #fff;
 }
+
+.header-text {
+    font-size: 16pt;
+}
+
 .subject {
     border-radius: 5px;
-    border: 1px solid rgba(255,255,255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 5px 5px;
+    text-decoration: none;
+    color: #fff;
 }
+
+.subject:hover {
+    background-color: #ccc;
+}
+
+.subject-section {
+    text-align: left;
+    font-size: 14pt;
+    font-style: bold;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.logo-img {
+    width: 100px;
+    margin-top: 10px;
+}
+
+.logo-name {
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 15pt;
+    font-style: italic;
+    color: #ecba16;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
 .subject:hover {
     border-color: rgba(255, 255, 255, 1.0);
 }
+
 .subject:active {
     background-color: #ccc;
 }
-/* .subject-title {
-}
 
-.num-cards {
-}
+.subject-title {}
+
+.num-cards {}
+
 .add-section {
-
-} */
+    margin-top: 12px;
+}
 
 .add-section:hover {
     color: #ddd;
@@ -41,34 +77,47 @@
     color: #fff;
 }
 
-.modal-form {
-}
+.modal-form {}
 
 .custom-button {
     padding-top: 5px;
     padding-bottom: 5px;
     border-style: solid;
-    border-color: #143d56;
-    border-radius: 5px;
+    border-color: #327576;
+    border-radius: 2px;
     margin-left: 10px;
-    background-color:#143d56;
+    background-color: #327576;
     color: #fff;
     font-size: 15px;
-    font-weight: 200; 
+    font-weight: 200;
 }
 
 .custom-textbox {
     width: 100%;
     height: 30px;
-    font-family: 'Roboto', san-serif;
-    font-size: 14pt;
+    font-size: 13pt;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .custom-textbox::placeholder {
     padding-left: 5px;
-    color: #ccc;
+}
+
+.custom-textbox-textarea {
+    width: 100%;
+    height: 100px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11pt;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.custom-textbox-textarea::placeholder {
+    padding-left: 5px;
 }
 
 .modal-form-group {
