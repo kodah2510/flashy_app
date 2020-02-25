@@ -1,26 +1,22 @@
 import React from "react";
-import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
-import logo from './logo.svg';
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
-import MainScreen from './MainScreen.js';
 
-import Home from "./routes/home.js";
+import Dashboard from './dashboard';
 import LoginForm from "./login_form";
-import Settings from "./routes/settings.js"
-import AddCard from "./routes/addcard.js"
 import CardScreen from './CardScreen.js'
 
 function App(props) {
 	return (
-		<Router>
-			<div className="App">
-				<Route exact path="/" component={LoginForm} />
-				<Route exact path="/mainscreen" component={MainScreen} />
-				<Route path="/settings" component={Settings} />
-				<Route path="/addcard" component={AddCard} />
-				<Route path="/cardscreen" component={CardScreen} />
-			</div>
-		</Router>
+		<div className="App">
+			<Router>
+				{/* <Switch> */}
+					<Route exact path="/" component={LoginForm} />
+					<Route path="/dashboard" component={Dashboard} />
+					<Route path="/cardscreen" component={CardScreen} />
+				{/* </Switch> */}
+			</Router>
+		</div>
 	);
 }
 export default App;

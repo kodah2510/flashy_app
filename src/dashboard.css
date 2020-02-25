@@ -1,0 +1,24 @@
+.wrapped {
+    padding: 1em;
+}
+
+.mb-0 {
+    margin-bottom: 0!important;
+}
+
+.brandname {
+    display: grid!important;
+    width: 200px !important;
+    text-align: center!important;
+}
+
+.user-info {
+    margin-right: 10px!important;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: "center";
+}

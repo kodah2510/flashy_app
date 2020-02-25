@@ -1,4 +1,7 @@
 import React from 'react';
+import { Container, Grid, Header, Image, Icon, Button, Checkbox, Form, Input, Segment} from 'semantic-ui-react';
+import './login_form.css';
+
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -29,45 +32,69 @@ class LoginForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         // send submit request to server
-        
+        this.props.history.push('/dashboard');
+    }
+
+    fbLogin(event) {
+        console.log("clicked");
+        fetch(process.env.REACT_APP_SERVER_URL + '/auth/facebook', {
+            method: 'GET',
+            mode: 'no-cors',
+        }).then(response => {
+            console.log(response);
+        });
     }
 
     render() {
         return (
-            <div className="ui container" style={{ height : '100vh' }}>
-            <div className="ui middle aligned center aligned grid " style={{ height: '100%' }}>
-                <div className="eight wide column centered">
-                    <h2 className="ui image header">
-                        <div className="content">
-                            Login to your account
-                        </div>
-                    </h2>
-                    <form className="ui large form">
-                        <div className="ui stacked segment">
-                            <div className="field">
-                                <div className="ui left icon input">
-                                    <i className="user icon"></i>                                
-                                    <input type="text" name="email" placeholder="Email address" onChange={this.handleEmailChange}/>
-                                </div>
-                            </div>
-
-                            <div className="field">
-                                <div className="ui left icon input">
-                                    <i className="lock icon"></i>
-                                    <input type="password" name="password" placeholder="Password" onChange={this.handlePasswordChange}/>
-                                </div>
-                            </div>
-
-                            <button className="ui fluid large primary submit button" onClick={this.handleSubmit}>Login</button>
-
-                        </div>
-                        <div className="ui error message"></div>
-                    </form>
-                </div>
-            </div>   
-            </div>
-
-
+            <Container>
+                <Grid columns={2} verticalAlign="middle"  stretched className="height-100">
+                    <Grid.Row centered>
+                        <Grid.Column>
+                            <Segment textAlign="left">
+                                <Header as="h2">Login to Flashy</Header>
+                                <Form>
+                                    <Form.Field>
+                                        <label>Email</label>
+                                        <Input icon="mail" iconPosition="left" placeholder="Email" />
+                                    </Form.Field>
+                                    <Form.Field>
+                                        <label>Password</label>
+                                        <Input icon="lock" iconPosition="left" placeholder="Password" />
+                                    </Form.Field>
+                                    <Form.Field>
+                                        <Checkbox label="Remember Me" />
+                                        <a style={{ float: 'right'}}>Forgot your password?</a>
+                                    </Form.Field>
+                                    <Form.Field>
+                                        <Button type="submit" fluid>Login</Button>
+                                    </Form.Field>
+                                    <Form.Field>
+                                        <Grid columns={2}>
+                                            <Grid.Column>
+                                                {/* <a href={process.env.REACT_APP_SERVER_URL + '/auth/facebook/'} className="ui fluid button">
+                                                    <Icon name="facebook" />
+                                                    <span>Login with Facebook</span>
+                                                </a> */}
+                                                <Button type="submit" fluid onClick={this.fbLogin}>
+                                                    <Icon name="facebook" />
+                                                    <span>Login with Facebook</span>
+                                                </Button>
+                                            </Grid.Column>
+                                            <Grid.Column>
+                                                <Button type="submit" fluid>
+                                                    <Icon name="google" />
+                                                    <span>Login with Google</span>
+                                                </Button>
+                                            </Grid.Column>
+                                        </Grid>
+                                    </Form.Field>
+                                </Form>
+                            </Segment>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            </Container>
         )
     }
 }
