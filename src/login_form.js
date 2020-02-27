@@ -1,20 +1,33 @@
 import React from 'react';
-import { Container, Grid, Header, Image, Icon, Button, Checkbox, Form, Input, Segment} from 'semantic-ui-react';
+import { Container, Grid, Header, Image, Icon, Button, Checkbox, Form, Input, Segment } from 'semantic-ui-react';
 import './login_form.css';
+import FacebookAuth from 'react-facebook-auth';
+// import Dashboard from './dashboard.js';
+import { Redirect } from 'react-router';
 
+function FBLoginButton({ onClick }) {
+    return (
+        <Button type="submit" fluid onClick={onClick}>
+            <Icon name="facebook" />
+            <span>Login with Facebook</span>
+        </Button>
+    );
+}
 
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            redirect: false
         };
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
+        this.authCallback = this.authCallback.bind(this);
+       
     }
 
     handleEmailChange(event) {
@@ -35,20 +48,49 @@ class LoginForm extends React.Component {
         this.props.history.push('/dashboard');
     }
 
-    fbLogin(event) {
-        console.log("clicked");
-        fetch(process.env.REACT_APP_SERVER_URL + '/auth/facebook', {
-            method: 'GET',
-            mode: 'no-cors',
-        }).then(response => {
-            console.log(response);
+
+    authCallback(response) {
+        let myBody = JSON.stringify({
+            id: response.id,
+            name: response.name,
+            email: response.email,
+            picture: response.picture
         });
+
+        fetch(process.env.REACT_APP_SERVER_URL + '/auth/facebook', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: myBody
+        }).then(function (res) {
+            return res.json();
+        }).then(json => {
+            if (json.status) {
+                // logged in
+                // console.log(this.props.onLogin);
+                this.props.onLogin();
+                // console.log(this.props.onLogin.auth);
+
+                this.setState({redirect: true});
+            } else {
+                // there is something wrong
+
+            }
+        });
+
+        // console.log(myBody);
+
     }
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to="/" />
+        }
         return (
             <Container>
-                <Grid columns={2} verticalAlign="middle"  stretched className="height-100">
+                <Grid columns={2} verticalAlign="middle" stretched className="height-100">
                     <Grid.Row centered>
                         <Grid.Column>
                             <Segment textAlign="left">
@@ -64,7 +106,7 @@ class LoginForm extends React.Component {
                                     </Form.Field>
                                     <Form.Field>
                                         <Checkbox label="Remember Me" />
-                                        <a style={{ float: 'right'}}>Forgot your password?</a>
+                                        <a style={{ float: 'right' }}>Forgot your password?</a>
                                     </Form.Field>
                                     <Form.Field>
                                         <Button type="submit" fluid>Login</Button>
@@ -72,14 +114,11 @@ class LoginForm extends React.Component {
                                     <Form.Field>
                                         <Grid columns={2}>
                                             <Grid.Column>
-                                                {/* <a href={process.env.REACT_APP_SERVER_URL + '/auth/facebook/'} className="ui fluid button">
-                                                    <Icon name="facebook" />
-                                                    <span>Login with Facebook</span>
-                                                </a> */}
-                                                <Button type="submit" fluid onClick={this.fbLogin}>
-                                                    <Icon name="facebook" />
-                                                    <span>Login with Facebook</span>
-                                                </Button>
+                                                <FacebookAuth 
+                                                    appId="498712694135009"
+                                                    callback={this.authCallback}
+                                                    component={FBLoginButton}
+                                                />
                                             </Grid.Column>
                                             <Grid.Column>
                                                 <Button type="submit" fluid>
